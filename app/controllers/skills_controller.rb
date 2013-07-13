@@ -2,7 +2,50 @@ class SkillsController < ApplicationController
 
 
 
-	def new
+	def list
+
+		arr = []
+		user_id = current_user.id
+		first = @neo.execute_query("START user=node:user_id(id='#{user_id}') MATCH user-[:skill_learn]-wanted RETURN wanted; ")
+		first["data"].each do |entry|
+			arr << entry[0]["data"]["name"]
+		end
+
+		second_query = ""
+		second_rel = ""
+
+		count = 0
+
+		arr.each do |skill|
+
+			second_query +=  " s#{count} = node:skill_name(name='#{skill}'),"
+			count += 1
+		end
+
+		second_query.chomp!(", ")
+		second_query.chomp!(",")
+		second_query.chomp!(", ")
+		second_query.chomp!(",")
+		second_rel += " "
+
+		other_count = 0
+
+			arr.each do |skill|
+
+			second_rel +=  " s#{other_count}<-[:skill_own]-person#{other_count},"
+			other_count += 1
+		end
+
+		second_rel.chomp!(", ")
+		second_rel.chomp!(",")
+		second_rel.chomp!(", ")
+		second_rel.chomp!(",")
+		second_rel += " "
+
+		second = @neo.execute_query("START #{second_query} MATCH #{second_rel} WHERE (person1) = (person2) AND (person2) = (person3) RETURN person1; ")
+
+
+
 	end
 
 	def create
@@ -51,7 +94,7 @@ class SkillsController < ApplicationController
 
 
 
-  		user_node = @neo.create_node("id" => @user['id'], "location" => @user['zip'], "age" => @user['age'])
+  		user_node = @neo.create_unique_node("user_id", "id", @user['id'],  {"id" => @user['id'], "location" => @user['zip'], "age" => @user['age']})
 
 
 
