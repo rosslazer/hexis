@@ -15,6 +15,8 @@ Hexis::Application.routes.draw do
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 
+  resources :matchmaker
+
   # Sample resource route with options:
   #   resources :products do
   #     member do
@@ -24,8 +26,9 @@ Hexis::Application.routes.draw do
   #
   #     collection do
   #       get 'sold'
-  #     end
+  #     end 
   #   end
+
 
   # Sample resource route with sub-resources:
   #   resources :products do
