@@ -1,0 +1,27 @@
+<div class="fill">
+<div class="container">
+
+<div id="top" class="row center">
+	<h1> Messages <h1>
+</div>
+
+<div class="row">
+	<span id="name" class="span12">
+		<span class="offset1 span3" id="nameText"> Name </span> <span class="offset2" id="nameText"> Delete </span>
+	</span>
+
+
+
+	
+	<% @messages.each do |message| %>
+
+	<span id="name" class="span12">
+		<a href="users/sign_up" class="offset1 span3" id="nameText"> <%= message.sender['first_name'] + ' ' + message.sender['last_name'] %></a> <img class="offset2" id="nameText"src="https://cdn1.iconfinder.com/data/icons/softwaredemo/PNG/128x128/DeleteRed.png" a width="20" height="20">
+	</span>
+
+	<% end %>
+
+</div>
+
+</div>
+</div>

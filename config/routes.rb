@@ -17,6 +17,11 @@ Hexis::Application.routes.draw do
 
   resources :matchmaker
 
+    resources :skills
+
+
+post '/skills/create' => 'skills#create'
+match 'messages/list' => 'messages#list'
   # Sample resource route with options:
   #   resources :products do
   #     member do
