@@ -1,0 +1,2 @@
+class MatchmakerController < ApplicationController
+end
