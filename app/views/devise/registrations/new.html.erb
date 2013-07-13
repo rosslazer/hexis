@@ -1,34 +1,40 @@
-<h2>Sign up</h2>
+<div class="container">
+<div class="fill">
+
+<h2 id="test">Sign up</h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
+    
+
+  <span class="row span3"><%= f.label :first_name %><br />
+  <%= f.text_field :first_name, :autofocus => true %></span>
 
 
-  <div><%= f.label :first_name %><br />
-  <%= f.text_field :first_name, :autofocus => true %></div>
+  <span class="row span3"><%= f.label :last_name %><br />
+  <%= f.text_field :last_name, :autofocus => true %></span>
 
 
-    <div><%= f.label :last_name %><br />
-  <%= f.text_field :last_name, :autofocus => true %></div>
+ <span class="row span12"><%= f.label :email %><br />
+  <%= f.email_field :email, :autofocus => true %></span>
 
+  <span class="row span12"><%= f.label :zip %><br />
+  <%= f.text_field :zip, :autofocus => true %></span>
 
-    <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+  <span class="row span12"><%= f.label :age %><br />
+  <%= f.text_field :age, :autofocus => true %></span>
 
-    <div><%= f.label :zip %><br />
-  <%= f.text_field :zip, :autofocus => true %></div>
+  <span class="row span12"><%= f.label :password %><br />
+  <%= f.password_field :password %></span>
 
-    <div><%= f.label :age %><br />
-  <%= f.text_field :age, :autofocus => true %></div>
+ <span class="row span12"><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></span>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.submit "Sign up" %></div>
+  <div class="row span12"><%= f.submit "Sign up" %></div>
 <% end %>
-
+  <div class="row span12">
 <%= render "devise/shared/links" %>
+  </div>
+  </div>
+</div>

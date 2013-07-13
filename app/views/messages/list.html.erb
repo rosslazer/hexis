@@ -17,7 +17,7 @@
 
 	<span id="name" class="span12">
 		<a class="offset1 span3" id="nameText"> <%= message.sender['first_name'] + ' ' + message.sender['last_name'] %></a><a><%= link_to "Show", messages_show_path(message.id) %>
-</a> <a> <%= link_to "Delete", messages_delete_path(message.id) %> <img class="offset2" id="nameText"src="https://cdn1.iconfinder.com/data/icons/softwaredemo/PNG/128x128/DeleteRed.png" a width="20" height="20"></a>
+</a> <a> <%= link_to "Delete", messages_delete_path(message.id) %> </a>
 	</span>
 
 	<% end %>
