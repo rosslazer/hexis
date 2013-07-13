@@ -14,7 +14,7 @@ class MessagesController < ApplicationController
 
 	def create
 
-	Message.new.save(params[:message])
+	Message.create(params[:message])
  
   
 	end
