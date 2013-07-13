@@ -18,14 +18,13 @@ class SkillsController < ApplicationController
 
 		arr.each do |skill|
 
-			second_query +=  " s#{count} = node:skill_name(name='#{skill}'),"
+			second_query +=  "name:#{skill} OR "
 			count += 1
 		end
 
-		second_query.chomp!(", ")
+		second_query.chomp!("OR ")
 		second_query.chomp!(",")
-		second_query.chomp!(", ")
-		second_query.chomp!(",")
+
 		second_rel += " "
 
 		other_count = 0
@@ -42,9 +41,73 @@ class SkillsController < ApplicationController
 		second_rel.chomp!(",")
 		second_rel += " "
 
-		second = @neo.execute_query("START #{second_query} MATCH #{second_rel} WHERE (person1) = (person2) AND (person2) = (person3) RETURN person1; ")
+		second = @neo.execute_query("START s0 = node:skill_name('#{second_query}') MATCH s0<-[:skill_own]-person return distinct person;")
+
+		other_user = []
+			second["data"].each do |entry|
+				if entry[0]['data']['id'] != user_id
+					other_user << entry[0]["data"]["id"]
+				end
 
 
+		end
+
+
+	matched_user = []
+		
+		other_user.each do |user|
+			returned_user = @neo.execute_query("START user=node:user_id(id='#{user}') MATCH user-[:skill_learn]-wanted RETURN wanted; ")
+			
+			matched_arr = []
+
+
+			returned_user["data"].each do |entry|
+			matched_arr << entry[0]["data"]["name"]
+		end
+
+		back_query = ""
+		arr.each do |skill|
+
+			back_query +=  "name:#{skill} OR "
+			count += 1
+		end
+
+		back_query.chomp!("OR ")
+		back_query.chomp!(",")
+
+		final = @neo.execute_query("START s0 = node:skill_name('#{back_query}') MATCH s0<-[:skill_own]-person return distinct person;")
+ 
+
+			final["data"].each do |entry|
+				if entry[0]['data']['id'] == user_id
+					matched_user << user
+				end
+
+
+		end
+
+
+		end 
+
+
+
+
+		@final_user_data = []
+
+		matched_user.each do |user|
+			skills = []
+			their_skills = @neo.execute_query("START user=node:user_id(id='#{user}') MATCH user-[:skill_learn]-wanted RETURN wanted; ")
+
+			their_skills["data"].each do |entry|
+			skills << entry[0]["data"]["name"]
+		end
+
+			@final_user_data << {:first_name => User.find(user).first_name, :last_name => User.find(user).last_name, :id => id, :skills => skills}
+
+		end
+
+
+		end
 
 	end
 
