@@ -128,7 +128,6 @@ class SkillsController < ApplicationController
 
 		end
 
-	end
 
 	def create
 
@@ -196,5 +195,8 @@ class SkillsController < ApplicationController
 
   # Some more logic for validating the parameters passed in
 	end
+
+		end
+
 
 
