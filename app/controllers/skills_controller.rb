@@ -21,6 +21,7 @@ class SkillsController < ApplicationController
 
 
 		arr = []
+		user_id = ''
 		user_id = current_user.id
 		first = @neo.execute_query("START user=node:user_id(id='#{user_id}') MATCH user-[:skill_learn]-wanted RETURN wanted; ")
 		first["data"].each do |entry|
@@ -70,11 +71,13 @@ class SkillsController < ApplicationController
 
 
 	matched_user = []
+
+				matched_arr = []
+
 		
 		other_user.each do |user|
 			returned_user = @neo.execute_query("START user=node:user_id(id='#{user}') MATCH user-[:skill_learn]-wanted RETURN wanted; ")
 			
-			matched_arr = []
 
 
 			returned_user["data"].each do |entry|
@@ -82,7 +85,7 @@ class SkillsController < ApplicationController
 		end
 
 		back_query = ""
-		arr.each do |skill|
+		matched_arr.each do |skill|
 
 			back_query +=  "name:#{skill} OR "
 			count += 1
