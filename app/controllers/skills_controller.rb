@@ -131,7 +131,7 @@ class SkillsController < ApplicationController
 
 	def create
 
-		@neon = Neography::Rest.new({ :protocol       => 'http://',
+		@neo = Neography::Rest.new({ :protocol       => 'http://',
                              :server         => 'edacb06fc.hosted.neo4j.org',
                              :port           => 7858,
                              :directory      => '',
