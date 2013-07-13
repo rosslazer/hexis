@@ -11,6 +11,7 @@ Hexis::Application.routes.draw do
 
     match 'messages/list' => 'messages#list'
 
+    match 'skills/list' => 'skills#list'
 
 
     resources :messages

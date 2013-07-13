@@ -1,0 +1,30 @@
+<div class="fill">
+<div class="container">
+
+<div id="bottomHeader" class="row center">
+	<h1> My Matches <h1>
+</div>
+
+
+<div class="row">
+	<span id="name" class="span12">
+		<span class="offset0 span2 headerMatch" id="nameText"> Name </span> <span class="offset2 headerMatch" id="nameText"> Skill </span> <span class="offset1 headerMatch" id="nameText"> Message User </span>
+	</span>
+	
+
+	<% @final_user_data.each do |user| %>
+
+	<span id="name" class="span12">
+		<span class="offset0 span3" id="nameText"> <%= user[:first_name] + ' ' + user[:last_name] %></span> <span class="offset2" id="nameText"> <%= user[:skills].join(" ") %> </span> 
+			<img class="offset1" id="nameText"src="https://cdn1.iconfinder.com/data/icons/free-3d-social-icons/png/24x24/Forum.png" a width="20" height="20"><a><%= link_to "Message", messages_new_path(user[:id]) %>
+</a>
+	</span>
+
+	<% end %>
+
+
+</div>
+
+</div>
+</div>
+

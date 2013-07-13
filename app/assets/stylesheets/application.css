@@ -10,4 +10,92 @@
  *
  *= require_self
  *= require_tree .
+ 
  */
+
+#backgroundImageNeeded{
+	background-image: url('http://img833.imageshack.us/img833/7412/4ppchannelbackground.png');
+	height: 360px;
+}
+
+#title{
+	font-size: 24px;
+	font-weight: bold;
+	font-family: Headline;
+}
+
+.spaceInBetween{
+	margin-left:20px;
+}
+
+.top{
+	margin-top: 20px;
+}
+
+.middle{
+	color:#FFFFFF;
+}
+
+.middleLeft{
+	width: 58%;
+}
+
+#middleTopText{
+	margin-top: 25px;
+	font-family: Helvetica;
+	font-size: 32px;
+	text-shadow: 1px 1px 1px #708090;
+	font-weight: 100;
+	margin-left: -20px;
+}
+
+#middleOtherText{
+	font-family: Arial;
+	margin-top:45px;
+	color:#D3D3D3;
+	font-size: 22px;
+	font-weight: 100;
+	line-height: 150%;
+}
+
+#rightSide{
+	margin-top: 50px;
+	margin-left: 20px;
+}
+
+.center{
+	text-align:center;
+}
+
+#bottomHeader{
+	margin-top: 50px;
+	margin-bottom: 30px;
+}
+
+#bottomText{
+	line-height: 150%;
+}
+
+#top{
+	margin-top: 100px;
+	margin-bottom: 40px;
+}
+
+#name{
+	margin-left: 150px;
+}
+
+#nameText{
+	margin-top: 30px;
+	font-size: 22px;
+	float:left;
+}
+
+#aRow{
+	width: 100px;
+}
+
+.right{
+	text-align: right;
+	float:right;
+}

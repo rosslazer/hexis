@@ -4,6 +4,22 @@ class SkillsController < ApplicationController
 
 	def list
 
+
+				@neo = Neography::Rest.new({ :protocol       => 'http://',
+                             :server         => 'edacb06fc.hosted.neo4j.org',
+                             :port           => 7858,
+                             :directory      => '',
+                             :authentication => 'basic',
+                             :username       => 'e35a2ae60',
+                             :password       => 'b1128b6be',
+                             :log_file       => 'neography.log',
+                             :log_enabled    => false,
+                             :max_threads    => 20,
+                             :cypher_path    => '/cypher',
+                             :gremlin_path   => '/ext/GremlinPlugin/graphdb/execute_script' })
+
+
+
 		arr = []
 		user_id = current_user.id
 		first = @neo.execute_query("START user=node:user_id(id='#{user_id}') MATCH user-[:skill_learn]-wanted RETURN wanted; ")
@@ -102,7 +118,7 @@ class SkillsController < ApplicationController
 			skills << entry[0]["data"]["name"]
 		end
 
-			@final_user_data << {:first_name => User.find(user).first_name, :last_name => User.find(user).last_name, :id => id, :skills => skills}
+			@final_user_data << {:first_name => User.find(user).first_name, :last_name => User.find(user).last_name, :id => user, :skills => skills}
 
 		end
 
@@ -175,4 +191,3 @@ class SkillsController < ApplicationController
 	end
 
 
-end
