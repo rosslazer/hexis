@@ -185,6 +185,9 @@ class SkillsController < ApplicationController
 			@neo.create_relationship("skill_learn", user_node , desire)
 		end
 
+		redirect_to skills_list_path
+
+
 
 
   # Some more logic for validating the parameters passed in
