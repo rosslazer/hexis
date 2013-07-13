@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130713102028) do
+ActiveRecord::Schema.define(:version => 20130713113215) do
 
   create_table "desires", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -23,6 +23,18 @@ ActiveRecord::Schema.define(:version => 20130713102028) do
   create_table "friendships", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "messages", :force => true do |t|
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.boolean  "sender_deleted",    :default => false
+    t.boolean  "recipient_deleted", :default => false
+    t.string   "subject"
+    t.text     "body"
+    t.datetime "read_at"
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
   end
 
   create_table "skills", :force => true do |t|

@@ -14,6 +14,10 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 
 gem 'amistad'
 
+
+gem 'simple-private-messages', '0.0.0', :git => 'git://github.com/jongilbraith/simple-private-messages.git'
+
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

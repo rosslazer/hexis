@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/jongilbraith/simple-private-messages.git
+  revision: 7ba7d3c9f7670ef3bddfc90390a49556a94f7013
+  specs:
+    simple-private-messages (0.0.0)
+
+GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
   revision: cdda8d78b41275e1fa4a6d7aa71b370573ca2553
   specs:
@@ -148,5 +154,6 @@ DEPENDENCIES
   pg
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)
+  simple-private-messages (= 0.0.0)!
   twitter-bootstrap-rails!
   uglifier (>= 1.0.3)
