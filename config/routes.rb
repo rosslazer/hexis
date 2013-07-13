@@ -5,7 +5,16 @@ Hexis::Application.routes.draw do
   # first created -> highest priority.
 
   # Sample of regular route:
-  #   match 'products/:id' => 'catalog#view'
+    match 'messages/show/:id' => 'messages#show', :as => 'messages_show'
+    match 'messages/delete/:id' => 'messages#delete', :as => 'messages_delete'
+    match 'messages/new/:id' => 'messages#new', :as => 'messages_new'
+
+    match 'messages/list' => 'messages#list'
+
+
+
+    resources :messages
+
   # Keep in mind you can assign values other than :controller and :action
 
   # Sample of named route:
@@ -21,7 +30,6 @@ Hexis::Application.routes.draw do
 
 
 post '/skills/create' => 'skills#create'
-match 'messages/list' => 'messages#list'
   # Sample resource route with options:
   #   resources :products do
   #     member do

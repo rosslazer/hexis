@@ -1,0 +1,10 @@
+<%= form_for @message do |f| %>
+    <p><%= f.label :body %>
+
+  <%= f.text_field :body %><p>
+
+   <%= f.hidden_field :sender_id, :value => current_user.id %>
+   <%= f.hidden_field :recipient_id, :value => @message.recipient.id %>
+
+  <%= f.submit %>
+<% end %>

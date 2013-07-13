@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
 
     def after_sign_up_path_for(resource)
-    "http://www.google.com" # <- Path you want to redirect the user to.
+    "/skills/new" # <- Path you want to redirect the user to.
   	end
 
 end
