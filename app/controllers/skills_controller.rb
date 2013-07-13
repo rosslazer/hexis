@@ -163,12 +163,12 @@ class SkillsController < ApplicationController
 		@skill_nodes = []
 		@desire_nodes = []
 		@skills.each do |skill|
-			@skill_nodes << @neon.create_unique_node("skill_name", "name", skill, {"name"=>skill})
+			@skill_nodes << @neo.create_unique_node("skill_name", "name", skill, {"name"=>skill})
 
 		end
 
 		@desires.each do |desire|
-			@desire_nodes << @neon.create_unique_node("skill_name", "name", desire, {"name"=>desire})
+			@desire_nodes << @neo.create_unique_node("skill_name", "name", desire, {"name"=>desire})
 		end
 
 
@@ -176,16 +176,16 @@ class SkillsController < ApplicationController
 
 
 
-  		user_node = @neon.create_unique_node("user_id", "id", @user['id'],  {"id" => @user['id'], "location" => @user['zip'], "age" => @user['age']})
+  		user_node = @neo.create_unique_node("user_id", "id", @user['id'],  {"id" => @user['id'], "location" => @user['zip'], "age" => @user['age']})
 
 
 
 		@skill_nodes.each do |skill|
-			@neon.create_relationship("skill_own", user_node , skill)
+			@neo.create_relationship("skill_own", user_node , skill)
 		end
 
 		@desire_nodes.each do |desire|
-			@neon.create_relationship("skill_learn", user_node , desire)
+			@neo.create_relationship("skill_learn", user_node , desire)
 		end
 
 		redirect_to skills_list_path
